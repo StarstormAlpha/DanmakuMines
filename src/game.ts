@@ -1,7 +1,9 @@
 import { Engine, Color } from "excalibur";
 import { Paddle } from "./entities/paddle";
+import { Ball } from "./entities/ball";
 
 let paddle : Paddle;
+let ball: Ball;
 export class Game extends Engine {
     /**
      * the game constructor, which calls the engine constructor
@@ -26,6 +28,9 @@ export class Game extends Engine {
         this.add(paddle);
         // add a mouse listener
         this.addMouseListener();
+        //add a ball
+        ball = new Ball();
+        this.add(ball);
     }
 
     addMouseListener(){
