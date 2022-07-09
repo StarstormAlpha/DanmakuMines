@@ -1,20 +1,27 @@
-import { Actor, Color, DisplayMode, Engine, Loader } from "excalibur";
-import { Player } from "./player";
+import { Engine } from "excalibur";
 import { Resources } from "./resources";
 
 class Game extends Engine {
-    constructor() {
-      super({width: 800, height: 600});
-    }
-    initialize() {
-      
-      const player = new Player();
-      this.add(player);
-
-      const loader = new Loader([Resources.Sword]);
-      this.start(loader);
-    }
+  /**
+   * the game constructor, which calls the engine constructor
+   */
+  constructor() {
+    super({
+      width: 1200,
+      height: 900,
+    });
   }
-  
-  export const game = new Game();
-  game.initialize();
+  /**
+   * the initialize method, which calls the start function of the engine
+   */
+  initialize(): void {
+    this.start();
+  }
+}
+
+/**
+ * LAUNCH THE GAME
+ */
+
+export const game: Game = new Game();
+game.initialize();
