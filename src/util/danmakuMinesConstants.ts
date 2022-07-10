@@ -1,6 +1,7 @@
-import { GameSceneDimensions } from '../interfaces/GameSceneDimensions';
-
-export const GAME_DIMENSIONS: GameSceneDimensions = {
+/**
+ * the dimensions: width and height of the scene
+ */
+export const GAME_DIMENSIONS = {
     gameWidth: 900,
     gameHeight: 675,
 };
