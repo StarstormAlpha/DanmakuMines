@@ -1,4 +1,4 @@
 export interface GameSceneDimensions {
-    gameWidth: number,
-    gameHeight: number,
-} 
+    gameWidth: number;
+    gameHeight: number;
+}
