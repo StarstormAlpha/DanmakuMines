@@ -8,7 +8,7 @@ export class Game extends Engine {
     paddle: Paddle = new Paddle();
     ball: Ball = new Ball();
     bricks: Brick[] = Brick.createBricks();
-    
+
     constructor() {
         super({
             width: GAME_DIMENSIONS.gameWidth,
@@ -31,56 +31,56 @@ export class Game extends Engine {
 
         // add a ball
         this.add(this.ball);
-        
+
         // add bricks
-        this.bricks.forEach(brick => {
+        this.bricks.forEach((brick) => {
             this.add(brick);
         });
-        
+
         // finally, play the game
         this.playGame();
     }
-    
+
     /**
      * method that describes the game after initialization
      */
-    playGame(): void{
+    playGame(): void {
         // ball bounces on screen edges
         this.ball.on('postupdate', () => {
             this.ball.updateBallVelocity();
         });
 
-        // ball collision with other objects on the screen 
+        // ball collision with other objects on the screen
         let colliding = false;
-        this.ball.on("collisionstart", ev => {
-            if(!colliding){
+        this.ball.on('collisionstart', (ev) => {
+            if (!colliding) {
                 // do the effect of the collision only once, cuz the ball could be colliding for multiple frames
                 colliding = true;
                 this.ballCollision(ev);
             }
         });
-        this.ball.on("collisionend", () => {
+        this.ball.on('collisionend', () => {
             colliding = false;
-        })
-    
+        });
+
         // ball exits screen
-        this.ball.on("exitviewport", () => {
-            alert("You lost the game.")
-        })
+        this.ball.on('exitviewport', () => {
+            alert('You lost the game.');
+        });
     }
 
     /**
      * a method that checks if ball collides with other objects
      */
-    ballCollision(ev: CollisionStartEvent<Actor>){
-        if(this.bricks.indexOf(ev.other) > -1){
+    ballCollision(ev: CollisionStartEvent<Actor>) {
+        if (this.bricks.indexOf(ev.other) > -1) {
             ev.other.kill();
         }
 
         //reverse course after any collision
         let intersection = ev.contact.mtv.normalize();
 
-        if(Math.abs(intersection.x) > Math.abs(intersection.y)){
+        if (Math.abs(intersection.x) > Math.abs(intersection.y)) {
             this.ball.vel.x *= -1;
         } else {
             this.ball.vel.y *= -1;

@@ -1,4 +1,4 @@
-import { Color } from "excalibur";
+import { Color } from 'excalibur';
 
 /**
  * the dimensions: width and height of the scene
