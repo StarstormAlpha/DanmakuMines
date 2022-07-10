@@ -36,9 +36,5 @@ export class Ball extends Actor {
         if (this.pos.y < this.height / 2) {
             this.vel.y = ballSpeed.y;
         }
-        //bottom collision, for tests
-        if (this.pos.y + this.height / 2 > GAME_DIMENSIONS.gameHeight) {
-            this.vel.y = ballSpeed.y * -1;
-        }
     }
 }
